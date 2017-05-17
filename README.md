@@ -7,7 +7,7 @@ License
 this project follow the rules stated by the [**MIT License**](https://en.wikipedia.org/wiki/MIT_License)
 
 <br></br>
-Version - Burning Marshmallow
+Version - Skewed Burning Marshmallow
 ---
 <img src="https://github.com/jrcforever/JavaFX_Game_Client/blob/master/images/Skewed%20Marshmallow.png"></img>
 
