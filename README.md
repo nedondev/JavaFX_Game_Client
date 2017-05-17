@@ -9,9 +9,7 @@ this project follow the rules stated by the [**MIT License**](https://en.wikiped
 <br></br>
 Version - Burning Marshmallow
 ---
-![ScreenShot](https://github.com/jrcforever/JavaFX_Game_Server/blob/master/images/background_1.png)
-
-![ScreenShot](https://github.com/jrcforever/JavaFX_Game_Client/blob/master/images/Skewed%20Marshmallow.png)
+<img src="https://github.com/jrcforever/JavaFX_Game_Client/blob/master/images/Skewed%20Marshmallow.png"></img>
 
 <br></br>
 Using Step
