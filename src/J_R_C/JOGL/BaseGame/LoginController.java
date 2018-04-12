@@ -129,27 +129,27 @@ public class LoginController implements Initializable {
 					public void run() {
 
 						if (txtID.getText().length() > 11) {
-							Platform.runLater(() -> handlePopup("11글자가 한계 입니다."));
+							Platform.runLater(() -> handlePopup("Limit 11 alphabets."));
 							txtID.setText(txtID.getText(0, 11));
 						}
 
 						if (txtPassWord.getText().length() > 11) {
-							Platform.runLater(() -> handlePopup("11글자가 한계 입니다."));
+							Platform.runLater(() -> handlePopup("Limit 11 alphabets."));
 							txtPassWord.setText(txtID.getText(0, 11));
 						}
 
 						if (txtFieldUsePassWordCheck != null && txtFieldUsePassWordCheck.getText().length() > 11) {
-							Platform.runLater(() -> handlePopup("11글자가 한계 입니다."));
+							Platform.runLater(() -> handlePopup("Limit 11 alphabets."));
 							txtFieldUsePassWordCheck.setText(txtFieldUsePassWordCheck.getText(0, 11));
 						}
 
 						if (txtFieldUsePassWord != null && txtFieldUsePassWord.getText().length() > 11) {
-							Platform.runLater(() -> handlePopup("11글자가 한계 입니다."));
+							Platform.runLater(() -> handlePopup("Limit 11 alphabets."));
 							txtFieldUsePassWord.setText(txtFieldUsePassWord.getText(0, 11));
 						}
 
 						if (txtFieldUserId != null && txtFieldUserId.getText().length() > 11) {
-							Platform.runLater(() -> handlePopup("11글자가 한계 입니다."));
+							Platform.runLater(() -> handlePopup("Limit 11 alphabets."));
 							txtFieldUserId.setText(txtFieldUserId.getText(0, 11));
 						}
 
@@ -172,12 +172,12 @@ public class LoginController implements Initializable {
 						}
 
 						if (ServerClient.SERVERCONNECTIONFAIL == client.getIsServerConnected()) {
-							btnLogin.setText("재연결");
+							btnLogin.setText("Connect");
 							btnLogin.requestLayout();
 
 						} else if (ServerClient.SERVERCONNECTIONSUCCESS == client.getIsServerConnected()) {
-							if (!btnLogin.getText().equals("시작"))
-								btnLogin.setText("시작");
+							if (!btnLogin.getText().equals("Start"))
+								btnLogin.setText("Start");
 						}
 						btnLogin.requestLayout();
 					}
@@ -251,7 +251,7 @@ public class LoginController implements Initializable {
 			dialog = new Stage(StageStyle.UTILITY);
 			dialog.initModality(Modality.WINDOW_MODAL);
 			dialog.initOwner(primaryStage);
-			dialog.setTitle("회원 가입");
+			dialog.setTitle("Sign Up");
 
 			Parent parent;
 			parent = FXMLLoader.load(getClass().getResource("/Fxml/custom_register.fxml"));
@@ -297,10 +297,10 @@ public class LoginController implements Initializable {
 	 */
 	public void checkTheNewUserRegisterSuccess(String packet[]) {
 		if (Boolean.parseBoolean(packet[1])) {
-			Platform.runLater(() -> handlePopup("개정 생성 성공"));
+			Platform.runLater(() -> handlePopup("Register Success!!"));
 			Platform.runLater(() -> dialog.close());
 		} else {
-			Platform.runLater(() -> handlePopup("개정이 이미 존재 합니다."));
+			Platform.runLater(() -> handlePopup("There are already Registered."));
 		}
 	}
 
@@ -315,7 +315,7 @@ public class LoginController implements Initializable {
 			client.sendPacket(Settings._REQUEST_REGISTER_NEW_USER + "", txtFieldUserId.getText(),
 					txtFieldUsePassWord.getText());
 		} else
-			Platform.runLater(() -> handlePopup("비밀번호가 다릅니다."));
+			Platform.runLater(() -> handlePopup("Wrong password."));
 
 	}
 
@@ -409,17 +409,17 @@ public class LoginController implements Initializable {
 	 * @param event
 	 */
 	public void handleBtnLogin(ActionEvent event) {
-		if (btnLogin.getText().equals("시작")) {
+		if (btnLogin.getText().equals("Start")) {
 
 			if (ServerClient.SERVERCONNECTIONFAIL == client.getIsServerConnected()) {
-				btnLogin.setText("연결중");
+				btnLogin.setText("Connect");
 			} else {
 				if (Settings.isClientVersionCheck)
 					client.sendPacket(Settings._REQUEST_LOGIN + "", txtID.getText(), txtPassWord.getText());
 				else
 					Platform.runLater(() -> handlePopup("you must update your Client Version"));
 			}
-		} else if (btnLogin.getText().equals("재연결")) {
+		} else if (btnLogin.getText().equals("Connect")) {
 			client.startClient();
 		}
 
@@ -449,7 +449,7 @@ public class LoginController implements Initializable {
 	{
 		Settings.isClientVersionCheck = true;
 		Platform.runLater(() -> versionID.setText(Settings.clientVersion));
-		Platform.runLater(() -> versionID.setLayoutX(260));
+		Platform.runLater(() -> versionID.setLayoutX(545));
 	}
 
 	/**
@@ -463,7 +463,7 @@ public class LoginController implements Initializable {
 		flag = Boolean.parseBoolean(packet[1]);
 
 		if (flag == false)
-			Platform.runLater(() -> handlePopup("로그인 정보가 잘못되었습니다."));
+			Platform.runLater(() -> handlePopup("incorrect login."));
 	}
 
 	/**
@@ -520,12 +520,12 @@ public class LoginController implements Initializable {
 
 		@Override
 		protected void succeeded() {
-			btnLogin.setText("시작");
+			btnLogin.setText("Start");
 		}
 
 		@Override
 		protected void cancelled() {
-			btnLogin.setText("재연결");
+			btnLogin.setText("Connect");
 		}
 
 		@Override
